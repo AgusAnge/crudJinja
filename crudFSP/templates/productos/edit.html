@@ -1,0 +1,39 @@
+<!--edicion de registro HTML-->
+
+{% include 'header.html' %}
+
+{% for producto in productos %}
+    <form method="post" action="/update" enctype="multipart/form-data">
+            <div class="card">
+                <div class="card-header">
+                    Edicion:
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Editar Producto:</h5>
+                    <p class="card-text">
+
+                        <div class="form-group">
+                            <label for="nombreProducto">Nombre: </label>
+                            <input id="nombreProducto" value="{{producto[1]}}" class="form-control" type="text" name="nombreProducto">
+                        </div>
+                        <div class="form-group">
+                            <label for="precioProducto">Precio:</label>
+                            <input id="precioProducto" value="{{producto[2]}}" class="form-control" type="text" name="precioProducto">
+                        </div>
+                        <div class="form-group">
+                            <label for="fotoProducto">Foto:</label> <br>
+                            <img class="img-thumbnail" width="100" src="{{url_for('uploads', nombreFoto=producto[3])}}" alt="">
+                            <input id="fotoProducto" value="{{producto[3]}}" class="form-control" type="file" name="fotoProducto">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success" value="Guardar">
+                            <a href="{{url_for('index')}}" class="btn btn-primary">Regresar</a>
+                        </div>  
+            <input type="hidden" value="{{producto[0]}}" name="txtId" id="txtId">
+            </p>
+            </div>
+        </div>
+    </form>
+{% endfor %}
+
+{% include 'footer.html' %}

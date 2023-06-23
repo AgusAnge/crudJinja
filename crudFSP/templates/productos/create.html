@@ -1,0 +1,68 @@
+<!--Creacion de un nuevo registro-->
+<!--el action /store lo que hace es que toda la informacion, sea enviada al link store-->
+{% include 'header.html' %}
+
+{% with messages= get_flashed_messages() %}
+    <!--Se reciben todos los mensajes usando flash-->
+{% if messages %}
+    <div class='alert alert-danger' role='alert'> 
+        {%for message in messages %}
+            {{message}}
+            <!--Si hay mensajes por flash, se desglosan de uno en uno-->
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% endwith %}
+
+<div class="card">
+    <div class="card-header">
+        Ingresar nuevo producto
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Datos del producto:</h5>
+        <p class="card-text">
+            <form method="post" action="/store" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombreProducto">Nombre del Producto:</label>
+                <input id="nombreProducto" class="form-control" type="text" name="nombreProducto">
+            </div>
+
+            <div class="form-group">
+                <label for="precioProducto">Precio:</label>
+                <input id="precioProducto" class="form-control" type="text" name="precioProducto">
+            </div>
+
+            <div class="form-group">
+                <label for="fotoProducto">Foto:</label>
+                <input id="fotoProducto" class="form-control" type="file" name="fotoProducto">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Agregar">
+                <a href="{{url_for('index')}}" class="btn btn-primary">Regresar</a>
+            </div>
+        </form>
+            <!--
+            <form method="post" action="/store" enctype="multipart/form-data">
+                Nombre del producto:
+                <input type="text" name="nombreProducto" id="nombreProducto">
+                <br>
+                Precio del Producto:
+                <input type="text" name="precioProducto" id="precioProducto">
+                <br>
+                Fotografia del Producto:
+                <input type="file" name="fotoProducto" id="fotoProducto">
+                <br>
+                <br>
+                <input type="submit" value="Agregar">
+            </form>
+            -->
+
+        </p>
+    </div>
+</div>
+
+
+
+{% include 'footer.html' %}

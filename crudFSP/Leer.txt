@@ -1,0 +1,2 @@
+Para ejecutar, posicionarse sobre carpeta contenedora de archivo app.py, y acto seguido, en terminal ejecutar python app.py
+El Sv, es generado por el pc servidor, se informa en resultados de terminal 

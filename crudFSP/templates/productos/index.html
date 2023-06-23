@@ -1,0 +1,33 @@
+
+{% include 'header.html' %}
+
+
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Fotografia</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Acciones</th> <!--interaccion con la BD-->
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %} <!--jfor de jinja2 -> motor de templates-->
+            <tr>
+                <td>{{producto[0]}}</td> <!--numero del registro-->
+
+                <td><img class="img-thumbnail" width="100" src="uploads/{{producto[3]}}" alt=""></td> <!--Fotografia del registro-->
+
+                <td>{{producto[1]}}</td> <!--producto del registro-->
+                <td>$ {{producto[2]}}</td> <!--precio del registro-->
+                <td><a href="/edit/{{producto[0] }}" class="btn btn-warning">Editar</a> | 
+                    <a onclick="return confirm('¿Desea eliminar?')" href="/destroy/{{producto[0] }}" class="btn btn-danger">Borrar</a>
+                    </td> <!--acciones del registro-->
+            </tr> 
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    {% include 'footer.html' %}
